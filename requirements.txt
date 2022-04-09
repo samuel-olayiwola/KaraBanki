@@ -47,7 +47,6 @@ playsound==1.2.2
 pluggy==1.0.0
 py==1.11.0
 pyaes==1.6.1
-PyAudio==0.2.11
 pydantic==1.9.0
 pyee==8.2.2
 pyinstaller==4.10
