@@ -2,6 +2,7 @@ from cmath import pi
 import json
 from logging import exception
 from time import sleep
+from click import command
 import pyttsx3
 import datetime
 import os
@@ -269,27 +270,30 @@ def welcome(phone):
 
 '''speak commands'''
 def voiceComands():
-    voiceTransfer()
-    voiceDeposit()
-    voiceAirtime()
-    voiceComplain()
+    commands = []
+    transfer = voiceTransfer()
+    deposit = voiceDeposit()
+    airtime = voiceAirtime()
+    complain = voiceComplain()
+    commands.append(transfer,deposit,airtime,complain)
+    return command
 
 
 '''play buy airtime command'''
 def voiceAirtime():
-    print("playing airtime message")
+    return '<Play url="playing airtime message"/>'
     #playsound('karaBankiVoice/airtime.mp3')
 
 
 '''play open account command'''
 def voiceOpenAcct():
     print("playing openacct message")
-    playsound('karaBankiVoice\openAcct.mp3')
+    return '<Play url="karaBankiVoice\openAcct.mp3"/>'
 
 '''play transfer to same account command'''
 def voiceTransfer():
     print("playing transfer to same bank message")
-    playsound('karaBankiVoice/transfer2same.mp3')
+    return '<Play url="karaBankiVoice/transfer2same.mp3"/>'
     
 
 # def voiceTransfer2Another():
@@ -302,20 +306,19 @@ def voiceTransfer():
     
 def voiceDeposit():
     print("playing deposit message")
-    playsound('karaBankiVoice\deposit.mp3')
+    return '<Play url="karaBankiVoice\deposit.mp3"/>'
     
 def voiceComplain():
     print("playing complaint message")
-    playsound('karaBankiVoice\complain.mp3')
+    return '<Play url="karaBankiVoice\complain.mp3"/>'
     
 def depositInstruction():
     print("playing deposit instruction message")
-    playsound('karaBankiVoice\depositInstruction.mp3')
+    return '<Play url="karaBankiVoice\depositInstruction.mp3"/>'
 
 def exitInstruction():
-    speak("input 0 to exit")
     print("exiting........")
-    playsound('karaBankiVoice\exit.mp3')
+    return '<Play url="karaBankiVoice\exit.mp3"/>'
 
 isNewCustomer = False
 

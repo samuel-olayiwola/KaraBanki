@@ -1,6 +1,14 @@
 import requests
 from flask import Flask, request
+import VoiceAssistant
+import africastalking
+import os
 
+
+
+africastalking.initialize(os.getenv("USERNAME"), os.getenv("API_KEY"))
+token_service = africastalking.Token
+service = africastalking.Voice
 
 
 app= Flask(__name__)
@@ -9,8 +17,15 @@ def voice():
   session_id   = request.values.get("sessionId", None)
   isActive  = request.values.get("isActive", None)
   phone_number = request.values.get("callerNumber", None)
-
-  response = '<Response> <GetDigits timeout="30" finishOnKey="#">'
+  response =  '<Response> <Play url="/KaraBankVoice/Welcome.mp3"/>'
+  
+  if(VoiceAssistant.isCustomer(phone_number.replace("+234",""))):
+    commands = VoiceAssistant.voiceComands()
+    for command in commands:
+      response += command
+  else:
+    VoiceAssistant.voiceOpenAcct()
+  response += ' <GetDigits timeout="30" finishOnKey="#">'
   response += '<Say voice="man" playBeep="false">Please enter your account '
   response += 'number followed by the hash sign</Say> </GetDigits> </Response>'
 

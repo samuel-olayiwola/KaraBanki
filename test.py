@@ -12,5 +12,4 @@ async def welome(resp):
             <Play url="/KaraBankVoice/Welcome.mp3"/>
             </Response>'''
 
-if __name__ == '__main__':
-    app.run(debug=True)
+            
