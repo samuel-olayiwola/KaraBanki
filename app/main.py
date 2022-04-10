@@ -6,9 +6,9 @@ import os
 
 
 
-africastalking.initialize(os.getenv("USERNAME"), os.getenv("API_KEY"))
-token_service = africastalking.Token
-service = africastalking.Voice
+# africastalking.initialize(os.getenv("USERNAME"), os.getenv("API_KEY"))
+# token_service = africastalking.Token
+# service = africastalking.Voice
 
 
 app= Flask(__name__)
