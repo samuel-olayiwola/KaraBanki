@@ -20,9 +20,9 @@ def voiceComands():
     airtime = voiceAirtime()
     complain = voiceComplain()
     commands.append(transfer)
-    commands.appenddeposit
-    commands.appendairtime
-    commands.appendcomplain
+    commands.append(deposit)
+    commands.append(airtime)
+    commands.append(complain)
     return commands
 
 
