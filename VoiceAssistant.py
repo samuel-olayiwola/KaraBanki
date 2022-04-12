@@ -1,16 +1,13 @@
-from cmath import pi
 import json
 from logging import exception
 from time import sleep
 from click import command
 import pyttsx3
-import datetime
 import os
 import speech_recognition as sr
 from inputimeout import inputimeout, TimeoutOccurred
 from playsound import playsound
 import requests
-from torch import double
 
 
 
