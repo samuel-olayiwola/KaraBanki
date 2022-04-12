@@ -400,10 +400,10 @@ def voice():
    if(isCustomer(phone_number.replace("+234",""))):
          commands = voiceComands()
          for command in commands:
-            response += command + '''
-                     <Say>For balance, press 7</Say>
+            response += command
+         response += '''<Say>For balance, pres 7</Say>
                      <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact">
-         <Say> please reply </Say>
+         
          </GetDigits>
          </Response>'''
    else:
