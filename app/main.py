@@ -268,22 +268,39 @@ def isCustomer(phone):
 app= Flask(__name__)
 
 
-@app.post('/Register')
-def register():
+@app.post('/Pin')
+def createPin():
    reply = request.values.get('dtmfDigits')
    phone_number = request.values.get("callerNumber",type=str)
-   if(createAcct(phone_number.replace("+234",""))):
-      return  '''<Response>
-            <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
-            
-            
-            </Response>'''
-   else:
+   return ''' '''
+
+
+@app.post('/Register')
+def register():
+   reply = request.values.get('dtmfDigits',type=int)
+   phone_number = request.values.get("callerNumber",type=str)
+   
+   if int(reply) == 1:
       return '''<Response>
-            <Say> An error occured, please try again</Say>
-            
-            
-            </Response>'''
+            <GetDigits timeout="15" callbackUrl="https://karabanki.herokuapp.com/Pin"> 
+                  <Say> Please create a 4 digit pin </Say>
+                </GetDigits>
+                  </Response>'''
+      
+   elif len(str(reply)) == 4:
+      if(createAcct(phone_number.replace("+234",""))):
+         
+         return  '''<Response>
+               <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
+               
+               
+               </Response>'''
+      else:
+         return '''<Response>
+               <Say> An error occured, please try again</Say>
+               
+               
+               </Response>'''
 
 @app.post('/')
 def voice():
