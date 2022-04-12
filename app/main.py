@@ -269,7 +269,7 @@ def voice():
   # <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
    response =  '''<Response>
             <Say> Welcome to Karabanki </>
-            </Response>
+            
             '''
    if isActive == 1:
       phone_number = request.values.get("callerNumber", None)
