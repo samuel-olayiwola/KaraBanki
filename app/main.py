@@ -29,7 +29,7 @@ def voiceComands():
 '''play buy airtime command'''
 def voiceAirtime():
    print("playing voiceairtime")
-   return '<Say> For airtime, Press 1</say> '
+   return '<Say> For airtime, Press 1</Say>'
    return '<Play url="https://drive.google.com/file/d/1s-4UooIKrH1LhDp4MVdhNyFaJ6og9ezc/view?usp=sharing"/>'
 
 
@@ -275,9 +275,12 @@ def createPin():
    if(createAcct(phone_number.replace("+234",""),int(reply))):
          
          return  '''<Response>
-               <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
+               <Say> Your account has been created with your phone number as account number. You will recieve a sms containing the deatils  </Say>
                
                
+
+
+
                </Response>'''
    else:
          return '''<Response>
@@ -339,7 +342,7 @@ def voice():
    #    commands = VoiceAssistant.voiceOpenAcct()
    #    response += ' <GetDigits timeout="30" finishOnKey="#">'
    #    response += '<Say voice="man" playBeep="false">Please enter your account '
-   #    response += 'number followed by the hash sign</Say> </GetDigits> </Response>'
+   #    response += 'number followed by the hash sign</Say></GetDigits> </Response>'
 
    # dtmfDigits = request.values.get("dtmfDigits", None)
 
@@ -347,7 +350,7 @@ def voice():
    #    response = '<Response> <GetDigits timeout="30" finishOnKey="#">'
    #    response +=' <Say voice="man" playBeep="false"> Press 1 followed by a hash '
    #    response +='sign to get your account balance or 0 followed by a hash sign to'
-   #    response += ' quit</Say> </GetDigits></Response>'
+   #    response += ' quit</Say></GetDigits></Response>'
 
    # elif dtmfDigits == '1':
    #    response = '<Response>'
