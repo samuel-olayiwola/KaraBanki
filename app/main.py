@@ -20,7 +20,7 @@ def voiceComands():
     airtime = voiceAirtime()
     complain = voiceComplain()
     exiting = exitInstruction()
-    commands.append(transfer)
+    #commands.append(transfer)
     commands.append(deposit)
     commands.append(airtime)
     commands.append(complain)
