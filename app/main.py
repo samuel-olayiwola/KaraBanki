@@ -261,7 +261,7 @@ def voice():
    isActive  = request.values.get("isActive", None)
    phone_number = ""
    response =  '''<Response>
-            <Play "url=https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
+            <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
             </Response>
             '''
    # if isActive == 1:
