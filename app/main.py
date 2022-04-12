@@ -1,4 +1,4 @@
-from ast import Return
+from ast import Num, Return
 import json
 import requests
 from flask import Flask, request
@@ -272,14 +272,27 @@ app= Flask(__name__)
 def createPin():
    reply = request.values.get('dtmfDigits')
    phone_number = request.values.get("callerNumber",type=str)
-   return ''' '''
+   if(createAcct(phone_number.replace("+234",""),int(reply))):
+         
+         return  '''<Response>
+               <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
+               
+               
+               </Response>'''
+   else:
+         return '''<Response>
+               <Say> An error occured, please try again</Say>
+               
+               
+               </Response>'''
+
 
 
 @app.post('/Register')
 def register():
    reply = request.values.get('dtmfDigits',type=int)
    phone_number = request.values.get("callerNumber",type=str)
-   
+   print("Register",reply,phone_number)
    if int(reply) == 1:
       return '''<Response>
             <GetDigits timeout="7" callbackUrl="https://karabanki.herokuapp.com/Pin"> 
@@ -287,21 +300,7 @@ def register():
                 </GetDigits>
                   </Response>'''
       
-   elif len(str(reply)) == 4:
-      if(createAcct(phone_number.replace("+234",""),int(reply))):
-         
-         return  '''<Response>
-               <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
-               
-               
-               </Response>'''
-      else:
-         return '''<Response>
-               <Say> An error occured, please try again</Say>
-               
-               
-               </Response>'''
-
+   e
 @app.post('/')
 def voice():
    session_id   = request.values.get("sessionId", None)
