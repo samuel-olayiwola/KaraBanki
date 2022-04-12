@@ -400,8 +400,8 @@ def voice():
          commands = voiceComands()
          for command in commands:
             response += command +"\n"
-         response += '''<Say>For balance, pres 7</Say>
-                     <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact"></GetDigits>
+         response += '''
+                     <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact"><Say>For balance, pres 7</Say></GetDigits>
                      </Response>'''
    else:
           
