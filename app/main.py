@@ -1,9 +1,7 @@
 import json
 import requests
 from flask import Flask, request
-import VoiceAssistant
-import africastalking
-import os
+
 
 
 
@@ -229,8 +227,7 @@ def balance(phone):
     response = requests.request("Get",url,headers = headers ,data = json.dumps(payload))
     if response.status_code == 200:
         bal = json.loads(response.content.decode('UTF-8'))["balance"]
-        speak("your balance is " + str(bal))
-        return
+        return bal
     else:
         
         return
@@ -271,12 +268,12 @@ def voice():
    
    if(phone_number != None):
       if(isCustomer(phone_number.replace("+234",""))):
-         commands = VoiceAssistant.voiceComands()
+         commands = voiceComands()
          for command in commands:
             response += command
          response += "</Response>"
       else:
-         commands = VoiceAssistant.voiceOpenAcct()
+         commands = voiceOpenAcct()
          response += "</Response>"
    # else:
    #    commands = VoiceAssistant.voiceOpenAcct()
