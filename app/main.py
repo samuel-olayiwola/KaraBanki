@@ -21,7 +21,7 @@ def voice():
          <say>
          <speak>
          Welcome to karabanki my dear
-         </speak
+         </speak>
          </say>
          </Response>'''
   return response
