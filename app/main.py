@@ -6,8 +6,9 @@ import os
 
 
 
-africastalking.initialize(os.getenv("USERNAME"), os.getenv("API_KEY"))
-service = africastalking.Voice
+# africastalking.initialize(os.getenv("USERNAME"), os.getenv("API_KEY"))
+# token_service = africastalking.Token
+# service = africastalking.Voice
 
 
 app= Flask(__name__)
@@ -15,16 +16,10 @@ app= Flask(__name__)
 def voice():
   session_id   = request.values.get("sessionId", None)
   isActive  = request.values.get("isActive", None)
-  
-  service.say("welcome to karabanki app", voice="woman")
-#   response = ""
-#   response =  '''<Response>
-#          <say>
-        
-#          Welcome to karabanki my dear
-       
-#          </say>
-#          </Response>'''
+  response = ""
+  response =  '''<Response>
+         <Say>Welcome to karabanki my dear</Say>
+         </Response>'''
   return response
 
 
