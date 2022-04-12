@@ -275,6 +275,7 @@ def voice():
       else:
          commands = voiceOpenAcct()
          response += "</Response>"
+   return response
    # else:
    #    commands = VoiceAssistant.voiceOpenAcct()
    #    response += ' <GetDigits timeout="30" finishOnKey="#">'
