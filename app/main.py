@@ -24,25 +24,25 @@ def voiceComands():
 
 '''play buy airtime command'''
 def voiceAirtime():
-    return '<Play url="karaBankiVoice\Airtime.mp3"/>'
-    #playsound('karaBankiVoice/airtime.mp3')
+   print("playing voiceairtime")
+   return '<Play url="https://drive.google.com/file/d/1s-4UooIKrH1LhDp4MVdhNyFaJ6og9ezc/view?usp=sharing"/>'
 
 
 '''play open account command'''
 def voiceOpenAcct():
     print("playing openacct message")
-    return '<Play url="karaBankiVoice\openAcct.mp3"/>'
+    return '<Play url="https://drive.google.com/file/d/1Ur37PMtVAE_ZD-eGbcx8hC-lTxfC4kFF/view?usp=sharing"/>'
 
 '''play transfer to same account command'''
 def voiceTransfer():
     print("playing transfer to same bank message")
-    return '<Play url="karaBankiVoice/transfer2same.mp3"/>'
+    return '<Play url="https://drive.google.com/file/d/16ZfZXfZmmR9-gcXOezGvqpa9Z3ALR1vW/view?usp=sharing"/>'
     
 
     
 def voiceDeposit():
     print("playing deposit message")
-    return '<Play url="karaBankiVoice\deposit.mp3"/>'
+    return '<Play url="https://drive.google.com/file/d/1-F6aLgRgnytTh3BZbv1dL9NbzZw1sYkD/view?usp=sharing"/>'
     
 def voiceComplain():
     print("playing complaint message")
@@ -50,11 +50,11 @@ def voiceComplain():
     
 def depositInstruction():
     print("playing deposit instruction message")
-    return '<Play url="karaBankiVoice\depositInstruction.mp3"/>'
+    return '<Play url="https://drive.google.com/file/d/11XHGpsYX5DzfJHJ9ocBw1ViCiY-FIYnY/view?usp=sharing"/>'
 
 def exitInstruction():
     print("exiting........")
-    return '<Play url="karaBankiVoice\exit.mp3"/>'
+    return '<Play url="https://drive.google.com/file/d/13UPIVf6IAvQcWCHguE_5PraQsAZUo55c/view?usp=sharing"/>'
 
 '''create an account for a new user'''
 def createAcct(phoneNum,pin):
@@ -261,7 +261,7 @@ def voice():
    isActive  = request.values.get("isActive", None)
    phone_number = ""
    response =  '''<Response>
-            <Say>Welcome to karabanki my dear</Say>
+            <Play "url=https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
             '''
    if isActive == 1:
       phone_number = request.values.get("callerNumber", None)
