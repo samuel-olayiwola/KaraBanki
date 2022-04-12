@@ -60,6 +60,7 @@ def depositInstruction():
 
 def exitInstruction():
     print("exiting........")
+    return '<Say> For exit, press 5 or hang up now</Say>'
     return '<Play url="https://drive.google.com/file/d/13UPIVf6IAvQcWCHguE_5PraQsAZUo55c/view?usp=sharing"/>'
 
 '''create an account for a new user'''
@@ -268,7 +269,7 @@ def voice():
    phone_number = ""
   # <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
    response =  '''<Response>
-            <Say> Welcome to Karabanki </>
+            <Say> Welcome to Karabanki </Say>
             
             '''
    if isActive == 1:
