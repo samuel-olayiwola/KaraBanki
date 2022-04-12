@@ -283,7 +283,7 @@ def voice():
             response += command
          response += "</Response>"
    else:
-         commands = voiceOpenAcct()
+         response = voiceOpenAcct()
          response += "</Response>"
    # else:
    #    response += "</Response>"
