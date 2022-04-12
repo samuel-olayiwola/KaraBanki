@@ -17,7 +17,13 @@ def voice():
   session_id   = request.values.get("sessionId", None)
   isActive  = request.values.get("isActive", None)
   response = ""
-  response =  '<Response><say>Welcome to karabanki my dear</say></Response>'
+  response =  '''<Response>
+         <say>
+         <speak>
+         Welcome to karabanki my dear
+         </speak
+         </say>
+         </Response>'''
   return response
 
 
