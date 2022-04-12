@@ -15,7 +15,7 @@ from flask import Flask, request
 '''speak commands'''
 def voiceComands():
     commands = []
-    transfer = voiceTransfer()
+    #transfer = voiceTransfer()
     deposit = voiceDeposit()
     airtime = voiceAirtime()
     complain = voiceComplain()
