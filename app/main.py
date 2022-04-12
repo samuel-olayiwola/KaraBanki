@@ -19,10 +19,12 @@ def voiceComands():
     deposit = voiceDeposit()
     airtime = voiceAirtime()
     complain = voiceComplain()
+    exiting = exitInstruction()
     commands.append(transfer)
     commands.append(deposit)
     commands.append(airtime)
     commands.append(complain)
+    commands.append(exiting)
     return commands
 
 
@@ -40,22 +42,25 @@ def voiceOpenAcct():
     return '<Play url="https://drive.google.com/file/d/1Ur37PMtVAE_ZD-eGbcx8hC-lTxfC4kFF/view?usp=sharing"/>'
 
 '''play transfer to same account command'''
-def voiceTransfer():
-    print("playing transfer to same bank message")
-    return '<Say> For transfer, press 2</Say>'
-    return '<Play url="https://drive.google.com/file/d/16ZfZXfZmmR9-gcXOezGvqpa9Z3ALR1vW/view?usp=sharing"/>'
-    
+# def voiceTransfer():
+#     print("playing transfer to same bank message")
+#     return '<Say> For transfer, press 2</Say>'
+#     return '<Play url="https://drive.google.com/file/d/16ZfZXfZmmR9-gcXOezGvqpa9Z3ALR1vW/view?usp=sharing"/>'
+   
+def balInstruction():
+   print("playing transfer to same bank message")
+   return '<Say> For balance, press 2</Say>'
 
     
 def voiceDeposit():
     print("playing deposit message")
-    return '<Say> For deppist, press 3</Say>'
+    return '<Say> For deposit, press 3</Say>'
     return '<Play url="https://drive.google.com/file/d/1-F6aLgRgnytTh3BZbv1dL9NbzZw1sYkD/view?usp=sharing"/>'
     
     
 def voiceComplain():
     print("playing complaint message")
-    return '<Say> For transfer, press 4</Say>'
+    return '<Say> For complaints, press 4</Say>'
     return '<Play url="karaBankiVoice\complain.mp3"/>'
     
 def depositInstruction():
@@ -241,7 +246,7 @@ def balance(phone):
         return bal
     else:
         
-        return
+        return False
 
 '''check if customer is registered.Returns a boolean'''
 def isCustomer(phone):
@@ -291,6 +296,79 @@ def createPin():
 
 
 
+@app.post('/airtime')
+def airtime():
+   reply = request.values.get('dtmfDigits',type=int)
+   phone_number = request.values.get("callerNumber",type=str)
+   print("Register",reply,phone_number)
+   if authenticate(phone_number,int(reply)):
+      return '''<Response>
+            <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/buyairtime"> 
+                  <Say> enter amount</Say>
+                </GetDigits>
+                  </Response>'''
+
+
+@app.post('/buyairtime')
+def buyairtime():
+   reply = request.values.get('dtmfDigits',type=int)
+   phone_number = request.values.get("callerNumber",type=str)
+   if airtimeMe(phone_number,reply):
+      return '''<Response>
+
+             
+                  <Say> Recharge Successful</Say>
+                
+             
+                  </Response>'''
+   else:
+      return "<Response><Say> Recharge unsuccessful </Say> </Response>"
+
+
+@app.post('/bal')
+def bal():
+   reply = request.values.get('dtmfDigits',type=int)
+   phone_number = request.values.get("callerNumber",type=str)
+   if authenticate(phone_number,reply):
+      bal = balance(phone_number)
+      if bal:
+
+         return '''<Response>
+
+             
+                  <Say> Your balance is </Say>''' + bal + '''
+                
+             
+                  </Response>'''
+      else:
+         return '''<Response>
+
+             
+                  <Say> An error occured </Say>
+                
+             
+                  </Response>'''
+
+
+@app.post('/transact')
+def transact():
+   reply = request.values.get('dtmfDigits',type=int)
+   phone_number = request.values.get("callerNumber",type=str)
+   print("Register",reply,phone_number)
+   if int(reply) == 1:
+      return '''<Response>
+            <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/airtime"> 
+                  <Say> enter your 4 digit pin </Say>
+                </GetDigits>
+                  </Response>'''
+   elif int(reply) == 2:
+         return '''<Response>
+            <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/bal"> 
+                  <Say> enter your 4 digit pin </Say>
+                </GetDigits>
+                  </Response>'''
+
+
 @app.post('/Register')
 def register():
    reply = request.values.get('dtmfDigits',type=int)
@@ -303,7 +381,7 @@ def register():
                 </GetDigits>
                   </Response>'''
       
-   e
+   
 @app.post('/')
 def voice():
    session_id   = request.values.get("sessionId", None)
@@ -323,7 +401,12 @@ def voice():
          commands = voiceComands()
          for command in commands:
             response += command
-         response += "</Response>"
+         response += '''
+                     <Say>For balance, pres 7</Say>
+                     <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact">
+         
+         </GetDigits>
+         </Response>'''
    else:
           
          response += '''
