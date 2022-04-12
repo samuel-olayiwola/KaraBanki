@@ -272,7 +272,7 @@ def voice():
             <Say> Welcome to Karabanki </Say>
             
             '''
-   print(request.values.get("callerNumber"),type=str)
+   print(request.values.get("callerNumber",type=str))
    # if isActive == 1:
    #    phone_number = request.values.get("callerNumber", None)
    
