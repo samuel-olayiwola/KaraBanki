@@ -17,9 +17,13 @@ def voice():
   session_id   = request.values.get("sessionId", None)
   isActive  = request.values.get("isActive", None)
   response = ""
-  if(isActive == 1):
-     phone_number = request.values.get("callerNumber", None)
-     response =  '<Response><say>Welcome to karabanki my dear</say></Response>'
+  response =  '<Response><say>Welcome to karabanki my dear</say></Response>'
+  return response
+
+
+#   if(isActive == 1):
+#      phone_number = request.values.get("callerNumber", None)
+   
     
   # if(phone_number != None):
   #   if(VoiceAssistant.isCustomer(phone_number.replace("+234",""))):
@@ -49,6 +53,3 @@ def voice():
   #     response = '<Response>'
   #     response += '<Say voice="man" playBeep="false" >Its been a pleasure, good bye </Say>'
   #     response+= '<Reject/> </Response>'
-
-  return response
-
