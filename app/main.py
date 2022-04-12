@@ -266,7 +266,7 @@ app= Flask(__name__)
 def voice():
    session_id   = request.values.get("sessionId", None)
    isActive  = request.values.get("isActive", None)
-   phone_number = ""
+   phone_number = "9019486087"
   # <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
    response =  '''<Response>
             <Say> Welcome to Karabanki </Say>
@@ -277,7 +277,7 @@ def voice():
    #    phone_number = request.values.get("callerNumber", None)
    
    
-   if(isCustomer(phone_number.replace("+234",""))):
+   if(isCustomer(phone_number)):
          commands = voiceComands()
          for command in commands:
             response += command
