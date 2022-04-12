@@ -390,7 +390,6 @@ def voice():
   # <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
    response =  '''<Response>
             <Say> Welcome to Karabanki </Say>
-            
             '''
    print()
    # if isActive == 1:
@@ -400,12 +399,10 @@ def voice():
    if(isCustomer(phone_number.replace("+234",""))):
          commands = voiceComands()
          for command in commands:
-            response += command
+            response += command +"\n"
          response += '''<Say>For balance, pres 7</Say>
-                     <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact">
-         
-         </GetDigits>
-         </Response>'''
+                     <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/transact"></GetDigits>
+                     </Response>'''
    else:
           
          response += '''
