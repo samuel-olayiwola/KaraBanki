@@ -282,13 +282,13 @@ def register():
    
    if int(reply) == 1:
       return '''<Response>
-            <GetDigits timeout="15" callbackUrl="https://karabanki.herokuapp.com/Pin"> 
+            <GetDigits timeout="7" callbackUrl="https://karabanki.herokuapp.com/Pin"> 
                   <Say> Please create a 4 digit pin </Say>
                 </GetDigits>
                   </Response>'''
       
    elif len(str(reply)) == 4:
-      if(createAcct(phone_number.replace("+234",""))):
+      if(createAcct(phone_number.replace("+234",""),int(reply))):
          
          return  '''<Response>
                <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
@@ -325,7 +325,7 @@ def voice():
    else:
           
          response += '''
-         <GetDigits timeout="30" callbackUrl="https://karabanki.herokuapp.com/Register">
+         <GetDigits timeout="5" callbackUrl="https://karabanki.herokuapp.com/Register">
          ''' + voiceOpenAcct() + '''
          </GetDigits>'''
             
