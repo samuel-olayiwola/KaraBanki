@@ -287,7 +287,7 @@ def voice():
          response += "</Response>"
    # else:
    #    response += "</Response>"
-   print(res)
+   print(response)
    return response
    
    # else:
