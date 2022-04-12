@@ -1,3 +1,4 @@
+from ast import Return
 import json
 import requests
 from flask import Flask, request
@@ -262,28 +263,50 @@ def isCustomer(phone):
 
 
 app= Flask(__name__)
+
+
+@app.post('/Register')
+def register():
+   reply = request.values.get('dtmfDigits')
+   phone_number = request.values.get("callerNumber",type=str)
+   if(createAcct(phone_number.replace("+234",""))):
+      return  '''<Response>
+            <Say> Your account has been created with your phpone number as account number. You will recieve a sms containing the deatils  </Say>
+            
+            
+            </Response>'''
+   else:
+      return '''<Response>
+            <Say> An error occured, please try again</Say>
+            
+            
+            </Response>'''
+
 @app.post('/')
 def voice():
    session_id   = request.values.get("sessionId", None)
    isActive  = request.values.get("isActive", None)
-   phone_number = "9019486087"
+   phone_number = request.values.get("callerNumber",type=str)
   # <Play url="https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
    response =  '''<Response>
             <Say> Welcome to Karabanki </Say>
             
             '''
-   print(request.values.get("callerNumber",type=str))
+   print()
    # if isActive == 1:
    #    phone_number = request.values.get("callerNumber", None)
    
    
-   if(isCustomer(phone_number)):
+   if(isCustomer(phone_number.replace("+234",""))):
          commands = voiceComands()
          for command in commands:
             response += command
          response += "</Response>"
    else:
          response += voiceOpenAcct()
+         '<GetDigits timeout="30" callbackUrl="https://karabanki.herokuapp.com/Register">  </GetDigits>'
+            
+         
          response += "</Response>"
    # else:
    #    response += "</Response>"
