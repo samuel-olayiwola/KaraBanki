@@ -262,19 +262,22 @@ def voice():
    phone_number = ""
    response =  '''<Response>
             <Play "url=https://drive.google.com/file/d/1Wnj-ukKcZ7lIiXGzuEDGjI9tshxbnO6D/view?usp=sharing"/>
+            </Response>
             '''
-   if isActive == 1:
-      phone_number = request.values.get("callerNumber", None)
+   # if isActive == 1:
+   #    phone_number = request.values.get("callerNumber", None)
    
-   if(phone_number != None):
-      if(isCustomer(phone_number.replace("+234",""))):
-         commands = voiceComands()
-         for command in commands:
-            response += command
-         response += "</Response>"
-      else:
-         commands = voiceOpenAcct()
-         response += "</Response>"
+   # if(phone_number != ""):
+   #    if(isCustomer(phone_number.replace("+234",""))):
+   #       commands = voiceComands()
+   #       for command in commands:
+   #          response += command
+   #       response += "</Response>"
+   #    else:
+   #       commands = voiceOpenAcct()
+   #       response += "</Response>"
+   # else:
+   #    response += "</Response>"
    return response
    # else:
    #    commands = VoiceAssistant.voiceOpenAcct()
