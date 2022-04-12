@@ -324,7 +324,7 @@ def voice():
          response += "</Response>"
    else:
          response += voiceOpenAcct()
-         '<GetDigits timeout="30" callbackUrl="https://karabanki.herokuapp.com/Register">  </GetDigits>'
+         response += '<GetDigits timeout="30" callbackUrl="https://karabanki.herokuapp.com/Register">  </GetDigits>'
             
          
          response += "</Response>"
